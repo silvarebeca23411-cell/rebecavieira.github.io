@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>José ❤️ Rebeca</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+color:white;
+text-align:center;
+scroll-behavior:smooth;
+overflow-x:hidden;
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.3);
+padding:15px;
+z-index:10;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-size:18px;
+}
+
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px;
+}
+
+h1{
+font-size:55px;
+}
+
+.contador{
+font-size:24px;
+margin-top:10px;
+}
+
+button{
+padding:15px 30px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4f87;
+font-size:18px;
+cursor:pointer;
+margin-top:20px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,200px);
+gap:20px;
+margin-top:30px;
+}
+
+.galeria img{
+width:200px;
+border-radius:15px;
+cursor:pointer;
+transition:0.4s;
+}
+
+.galeria img:hover{
+transform:scale(1.1);
+}
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+.popup img{
+width:70%;
+border-radius:20px;
+}
+
+.carta{
+max-width:700px;
+font-size:20px;
+line-height:1.6;
+}
+
+.heart{
+position:fixed;
+bottom:-50px;
+font-size:20px;
+animation:subir 6s linear infinite;
+}
+
+@keyframes subir{
+0%{transform:translateY(0);opacity:1}
+100%{transform:translateY(-120vh);opacity:0}
+}
+
+#intro{
+position:fixed;
+background:black;
+color:white;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:20;
+font-size:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="intro">
+
+<p>Um site especial para você ❤️</p>
+
+<button onclick="abrirSite()">Entrar</button>
+
+</div>
+
+<audio id="musica" loop>
+
+<source src="musica.mp3" type="audio/mpeg">
+
+</audio>
+
+<nav>
+
+<a href="#inicio">Início</a>
+<a href="#historia">Nossa História</a>
+<a href="#fotos">Fotos</a>
+<a href="#carta">Carta</a>
+
+</nav>
+
+<section id="inicio">
+
+<h1>José ❤️ Rebeca</h1>
+
+<p>Desde 16/03/2024</p>
+
+<div class="contador" id="contador"></div>
+
+</section>
+
+<section id="historia">
+
+<h2>Nossa História</h2>
+
+<p>
+
+COLOQUE A HISTÓRIA DE VOCÊS AQUI
+
+</p>
+
+</section>
+
+<section id="fotos">
+
+<h2>Nossos Momentos</h2>
+
+<div class="galeria">
+
+<img src="foto1.jpg" onclick="abrirFoto(this)">
+<img src="foto2.jpg" onclick="abrirFoto(this)">
+<img src="foto3.jpg" onclick="abrirFoto(this)">
+<img src="foto4.jpg" onclick="abrirFoto(this)">
+
+</div>
+
+</section>
+
+<section id="carta">
+
+<h2>Uma carta para você</h2>
+
+<p class="carta">
+
+meu amor.. hoje é um dia muito especial para nós. 2 anos de felicidade ao seu lado..Claro nem sempre foi so flores, mas tbm tem os espinhos, que fazem parte da nossa história. vc não é so meu namorado, vc é meu melhor amigo, meu porto seguro, meu bebê e muito mais. Agradeço por tudo oq ja fez e faz por mim meu amor. vc é o amor da minha vida, e apesar de tudo, ou do que digam, eu vou esta sempre do seu lado, te amando e te apoiando. Quero esta do seu lado pra sempre meu bem. Teu sorriso, sua fala, seu olhar, seu abraço, suas gracinhas, seus beijos, seu toque..cada isso me faz ser uma mulher amada, e sou grata por ter vc na minha vida. Feliz nosso dia, eu te amo🤍
+
+</p>
+
+<button onclick="surpresa()">Clique aqui ❤️</button>
+
+</section>
+
+<div class="popup" id="popup" onclick="fecharFoto()">
+
+<img id="fotoGrande">
+
+</div>
+
+<script>
+
+function abrirSite(){
+
+document.getElementById("intro").style.display="none"
+
+document.getElementById("musica").play()
+
+}
+
+let inicio = new Date("2024-03-16")
+
+function atualizarContador(){
+
+let hoje = new Date()
+
+let anos = hoje.getFullYear() - inicio.getFullYear()
+
+let meses = hoje.getMonth() - inicio.getMonth()
+
+let dias = hoje.getDate() - inicio.getDate()
+
+if(dias<0){
+meses--
+dias+=30
+}
+
+if(meses<0){
+anos--
+meses+=12
+}
+
+document.getElementById("contador").innerHTML =
+anos+" anos "+meses+" meses "+dias+" dias juntos ❤️"
+
+}
+
+setInterval(atualizarContador,1000)
+
+atualizarContador()
+
+function abrirFoto(img){
+
+document.getElementById("popup").style.display="flex"
+
+document.getElementById("fotoGrande").src=img.src
+
+}
+
+function fecharFoto(){
+
+document.getElementById("popup").style.display="none"
+
+}
+
+function surpresa(){
+
+alert("Eu te amo muito ❤️")
+
+}
+
+function coracoes(){
+
+for(let i=0;i<25;i++){
+
+let c=document.createElement("div")
+
+c.className="heart"
+
+c.innerHTML="❤️"
+
+c.style.left=Math.random()*100+"%"
+
+c.style.animationDuration=5+Math.random()*5+"s"
+
+document.body.appendChild(c)
+
+}
+
+}
+
+coracoes()
+
+</script>
+
+</body>
+
+</html>
